@@ -7,15 +7,15 @@
 get_predictions(party_object, ids, newdata_fun, predict_arg = NULL)
 }
 \arguments{
-\item{party_object}{object of class \code{party}}
+\item{party_object}{object of class `party`}
 
 \item{ids}{Id's to plot. Numeric, "terminal", "inner" or "all". MUST be identical
-to \code{ids} of \code{\link[=geom_node_plot]{geom_node_plot()}} used to plot this data.}
+to `ids` of [geom_node_plot()] used to plot this data.}
 
-\item{newdata_fun}{function which takes \code{data} of node and returns \code{newdata}
-for \code{predict()}}
+\item{newdata_fun}{function which takes `data` of node and returns `newdata`
+for `predict()`}
 
-\item{predict_arg}{list of additional arguments passed to \code{\link[=predict]{predict()}}}
+\item{predict_arg}{list of additional arguments passed to [predict()]}
 }
 \description{
 Create data.frame with predictions for each node

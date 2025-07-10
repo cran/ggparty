@@ -12,7 +12,7 @@
 #' @param size Expansion factor for viewport's size.
 #' @param ids Id's to plot. Numeric, "terminal", "inner" or "all". Defaults
 #' to "terminal".
-#' @param scales See [facet_wrap()]
+#' @param scales See [ggplot2::facet_wrap()]
 #' @param nudge_x,nudge_y Nudges node plot.
 #' @param shared_axis_labels If TRUE only one pair of axes labels is plotted in
 #' the terminal space. Only recommended if `ids`  "terminal" or "all".

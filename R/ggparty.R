@@ -1,7 +1,7 @@
 #' Create a new ggparty plot
 #'
 #' `ggplot2` extension for objects of class `party`. Creates a `data.frame` from
-#' an object of class `party` and calls [ggplot()]
+#' an object of class `party` and calls [ggplot2::ggplot()]
 #'
 #'  `ggparty` can be called directly with an object of class `party`, which will
 #' convert it to a suitable `data.frame` and pass it to a call to `ggplot` with as
@@ -152,8 +152,8 @@ ggparty <- function(party, horizontal = FALSE, terminal_space, layout = NULL,
 #'  their parent's coordinates. Other mappings can be added here as `aes()`.
 #' @param nudge_x,nudge_y Nudge labels.
 #' @param ids Choose which edges to draw by their children's ids.
-#' @param show.legend `logical` See [layer()].
-#' @param ... Additional arguments for [geom_segment()].
+#' @param show.legend `logical` See [ggplot2::layer()].
+#' @param ... Additional arguments for [ggplot2::geom_segment()].
 #'
 #' @seealso [ggparty()], [geom_edge()]
 #' @export
@@ -223,11 +223,11 @@ geom_edge <- function(mapping = NULL, nudge_x = 0, nudge_y = 0, ids = NULL,
 #' @param splitlevels Which levels of split to plot. This may be useful in the
 #' presence of many factor levels for one split break.
 #' @param max_length If provided **breaks_label** levels will be truncated to the specified length.
-#' @param label.size See [geom_label()].
+#' @param label.size See [ggplot2::geom_label()].
 #' @param parse Needs to be true in order to parse inequality signs of **breaks_label**.
 #' @param parse_all Defaults to `FALSE`, in which case everything but the inequality
 #'  signs of **breaks_label** are deparsed. If `TRUE` complete **breaks_label** are parsed.
-#' @param ... Additional arguments for [geom_label()].
+#' @param ... Additional arguments for [ggplot2::geom_label()].
 #' @seealso [ggparty()]
 #' @export
 #' @md

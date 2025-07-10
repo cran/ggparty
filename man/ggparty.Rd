@@ -4,48 +4,53 @@
 \alias{ggparty}
 \title{Create a new ggparty plot}
 \usage{
-ggparty(party, horizontal = FALSE, terminal_space, layout = NULL,
-  add_vars = NULL)
+ggparty(
+  party,
+  horizontal = FALSE,
+  terminal_space,
+  layout = NULL,
+  add_vars = NULL
+)
 }
 \arguments{
-\item{party}{Object of class \code{party}.}
+\item{party}{Object of class `party`.}
 
-\item{horizontal}{If \code{TRUE} plot will be horizontal.}
+\item{horizontal}{If `TRUE` plot will be horizontal.}
 
 \item{terminal_space}{Proportion of the plot that should be reserved for
-the terminal nodeplots. Defaults to \code{2 / (depth(party) + 2)}.}
+the terminal nodeplots. Defaults to `2 / (depth(party) + 2)`.}
 
 \item{layout}{Optional layout adjustment. Overwrites the coordinates of the
-specified nodes. Must be \code{data.frame} containing the
-columns \code{id}, \code{x} and \code{y}. With \code{x} and \code{y} values between 0 and 1.}
+specified nodes. Must be `data.frame` containing the
+ columns `id`, `x` and `y`. With `x` and `y` values between 0 and 1.}
 
 \item{add_vars}{Named list containing either string(s) specifying the locations
 of elements to be extracted from
-each node of \code{party}  or function(s) of corresponding row of plot data and node.
-In either case returned object  has to be of length 1.
-If the data is supposed to be accessible by \code{\link[=geom_node_plot]{geom_node_plot()}} the respective
-list entry has
-to be named with the prefix \code{"nodedata_"} and be a function returning a list
-of same length as \code{nodesize}.}
+each node of `party`  or function(s) of corresponding row of plot data and node.
+ In either case returned object  has to be of length 1.
+ If the data is supposed to be accessible by [geom_node_plot()] the respective
+ list entry has
+ to be named with the prefix `"nodedata_"` and be a function returning a list
+ of same length as `nodesize`.}
 }
 \description{
-\code{ggplot2} extension for objects of class \code{party}. Creates a \code{data.frame} from
-an object of class \code{party} and calls \code{\link[=ggplot]{ggplot()}}
+`ggplot2` extension for objects of class `party`. Creates a `data.frame` from
+an object of class `party` and calls [ggplot2::ggplot()]
 }
 \details{
-\code{ggparty} can be called directly with an object of class \code{party}, which will
-convert it to a suitable \code{data.frame} and pass it to a call to \code{ggplot} with as
-the \code{data} argument. As usual, additional components can then be added with
-\code{+}.
+`ggparty` can be called directly with an object of class `party`, which will
+convert it to a suitable `data.frame` and pass it to a call to `ggplot` with as
+the `data` argument. As usual, additional components can then be added with
+`+`.
 
 The nodes will be spaced equally in the unit square. Specifying
-\code{terminal_size} allows to increase or decrease the area for plots of the
+`terminal_size` allows to increase or decrease the area for plots of the
 terminal nodes.
 
-If one of the list entries supplied to \code{add_vars} is a function, it has to take
-exactly two arguments,
-namely \code{data} (the corresponding row of the plot_data data frame) and \code{node}
-(the corresponding node, i.e. \code{party_object[i]})
+If one of the list entries supplied to `add_vars` is a function, it has to take
+ exactly two arguments,
+ namely `data` (the corresponding row of the plot_data data frame) and `node`
+  (the corresponding node, i.e. `party_object[i]`)
 }
 \examples{
 library(ggparty)
@@ -72,6 +77,6 @@ ggparty(py) +
                   ids = "terminal")
 }
 \seealso{
-\code{\link[=geom_edge]{geom_edge()}}, \code{\link[=geom_edge_label]{geom_edge_label()}}, \code{\link[=geom_node_label]{geom_node_label()}},
-\code{\link[=autoplot.party]{autoplot.party()}}, \code{\link[=geom_node_plot]{geom_node_plot()}}
+[geom_edge()], [geom_edge_label()], [geom_node_label()],
+ [autoplot.party()], [geom_node_plot()]
 }

@@ -4,8 +4,14 @@
 \alias{geom_edge}
 \title{Draw edges}
 \usage{
-geom_edge(mapping = NULL, nudge_x = 0, nudge_y = 0, ids = NULL,
-  show.legend = NA, ...)
+geom_edge(
+  mapping = NULL,
+  nudge_x = 0,
+  nudge_y = 0,
+  ids = NULL,
+  show.legend = NA,
+  ...
+)
 }
 \arguments{
 \item{mapping}{Mapping of \code{x}, \code{y}, \code{xend} and \code{yend} defaults to \code{ids}' and
@@ -15,9 +21,9 @@ their parent's coordinates. Other mappings can be added here as \code{aes()}.}
 
 \item{ids}{Choose which edges to draw by their children's ids.}
 
-\item{show.legend}{\code{logical} See \code{\link[=layer]{layer()}}.}
+\item{show.legend}{\code{logical} See \code{\link[ggplot2:layer]{ggplot2::layer()}}.}
 
-\item{...}{Additional arguments for \code{\link[=geom_segment]{geom_segment()}}.}
+\item{...}{Additional arguments for \code{\link[ggplot2:geom_segment]{ggplot2::geom_segment()}}.}
 }
 \description{
 Draws edges between children and parent nodes. Wrapper for \code{\link[ggplot2:geom_segment]{ggplot2::geom_segment()}}

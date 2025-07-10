@@ -1,14 +1,14 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
 collapse = TRUE,
 comment = "#>",
 fig.width = 7
 )
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 library(ggparty)
 
-## ---- fig.asp = 1, eval = T, echo = FALSE--------------------------------
+## ----fig.asp = 1, eval = T, echo = FALSE--------------------------------------
 data("TeachingRatings", package = "AER")
 tr <- subset(TeachingRatings, credits == "more")
 
@@ -90,7 +90,7 @@ ggparty(tr_tree, terminal_space = 0.4,
                                     size = 1.1)) +
   theme(legend.position = "none")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 data("WeatherPlay", package = "partykit")
 sp_o <- partysplit(1L, index = 1:3)
 sp_h <- partysplit(3L, breaks = 75)
@@ -105,12 +105,12 @@ pn <- partynode(1L, split = sp_o, kids = list(
     partynode(8L, info = "no")))))
 py <- party(pn, WeatherPlay)
 
-## ---- results = "asis"---------------------------------------------------
+## ----results = "asis"---------------------------------------------------------
 is.ggplot(ggparty(py))
 
 pander::pandoc.table(ggparty(py)$data[,1:16])
 
-## ----Weatherplay, fig.width = 7------------------------------------------
+## ----Weatherplay, fig.width = 7-----------------------------------------------
 ggparty(py) +
   geom_edge() +
   geom_edge_label() +
@@ -120,7 +120,7 @@ ggparty(py) +
   # identical to geom_node_info()
  
 
-## ---- fig.width = 7------------------------------------------------------
+## ----fig.width = 7------------------------------------------------------------
 ggparty(py) +
   geom_edge() +
   geom_edge_label() +
@@ -131,18 +131,18 @@ ggparty(py) +
                      size = nodesize))
 
 
-## ---- fig.width = 7, eval = T--------------------------------------------
+## ----fig.width = 7, eval = T--------------------------------------------------
 ggparty(py, horizontal = TRUE) +
   geom_edge() +
   geom_edge_label() +
   geom_node_splitvar() +
   geom_node_info()
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 gg <- ggparty(py, add_vars = list(right = "$node$split$right"))
 gg$data$right
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 gg <- ggparty(py, add_vars = list(right =
                                     function(data, node) {
                                       node$node$split$right
@@ -151,7 +151,7 @@ gg <- ggparty(py, add_vars = list(right =
               )
 gg$data$right
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 gg <- ggparty(py, add_vars = list(nodedata_x_dens =
                                     function(data, node) {
                                       list(density(node$data$temperature,
@@ -161,7 +161,7 @@ gg <- ggparty(py, add_vars = list(nodedata_x_dens =
               )
 gg$data$nodedata_x_dens
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 n1 <- partynode(id = 1L, split = sp_o, kids = lapply(2L:4L, partynode))
 t2 <- party(n1,
             data = WeatherPlay,
@@ -173,13 +173,13 @@ t2 <- party(n1,
 )
 t2 <- as.constparty(t2)
 
-## ---- fig.width = 3, fig.asp = 0.8, eval = T-----------------------------
+## ----fig.width = 3, fig.asp = 0.8, eval = T-----------------------------------
 ggplot(t2[2]$data) +
   geom_bar(aes(x = "", fill = play),
            position = position_fill()) +
   xlab("play")
 
-## ---- fig.asp=1, fig.width = 7, eval = T---------------------------------
+## ----fig.asp=1, fig.width = 7, eval = T---------------------------------------
 ggparty(t2) +
   geom_edge() +
   geom_edge_label() +
@@ -190,7 +190,7 @@ ggparty(t2) +
                                         position = position_fill()),
                                xlab("play")))
 
-## ---- fig.asp=1, fig.width = 7, eval = T---------------------------------
+## ----fig.asp=1, fig.width = 7, eval = T---------------------------------------
 ggparty(t2) +
   geom_edge() +
   geom_edge_label() +
@@ -204,7 +204,7 @@ ggparty(t2) +
                  legend_separator = TRUE
                  )
 
-## ---- fig.asp=1, fig.width = 7, eval = T---------------------------------
+## ----fig.asp=1, fig.width = 7, eval = T---------------------------------------
 ggparty(t2) +
   geom_edge() +
   geom_edge_label() +
@@ -216,7 +216,7 @@ ggparty(t2) +
                  shared_legend = FALSE
   )
 
-## ---- fig.width = 7, eval = T--------------------------------------------
+## ----fig.width = 7, eval = T--------------------------------------------------
 ggparty(t2) +
   geom_edge() +
   geom_edge_label() +
@@ -228,14 +228,14 @@ ggparty(t2) +
                                theme_void()),
                  size = "nodesize")
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 data("TeachingRatings", package = "AER")
 tr <- subset(TeachingRatings, credits == "more")
 
 tr_tree <- lmtree(eval ~ beauty | minority + age + gender + division + native +
                     tenure, data = tr, weights = students, caseweights = FALSE)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggparty(tr_tree) +
   geom_edge() +
   geom_edge_label() +
@@ -255,7 +255,7 @@ ggparty(tr_tree) +
                                    size = 1.2)
                 )
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 data("GBSG2", package = "TH.data")
 GBSG2$time <- GBSG2$time/365
 
@@ -272,7 +272,7 @@ gbsg2_tree <- mob(Surv(time, cens) ~ horTh + pnodes | age + tsize +
                     tgrade + progrec + estrec + menostat, data = GBSG2,
                   fit = wbreg, control = mob_control(minsize = 80))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # function to generate newdata for predictions
 generate_newdata <- function(data) {
   z <- data.frame(horTh = factor(rep(c("yes", "no"),
@@ -294,7 +294,7 @@ pred_df <- get_predictions(gbsg2_tree,
                                               p = 0.5)
 )
 
-## ---- fig.asp = 0.8, fig.width=7, eval = T-------------------------------
+## ----fig.asp = 0.8, fig.width=7, eval = T-------------------------------------
 ggparty(gbsg2_tree, terminal_space = 0.8, horizontal = TRUE) +
   geom_edge() +
   geom_node_splitvar() +
@@ -317,7 +317,7 @@ ggparty(gbsg2_tree, terminal_space = 0.8, horizontal = TRUE) +
     shared_axis_labels = TRUE
   )
 
-## ---- fig.width= 7, fig.asp= 0.6, eval = T-------------------------------
+## ----fig.width= 7, fig.asp= 0.6, eval = T-------------------------------------
 ggparty(tr_tree,
         terminal_space = 0,
         add_vars = list(intercept = "$node$info$coefficients[1]",
@@ -372,7 +372,7 @@ ggparty(tr_tree,
   # html_documents seem to cut off a bit too much at the edges so set limits manually
   coord_cartesian(xlim = c(0, 1), ylim = c(-0.1, 1.1))
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 ## Boston housing data
 data("BostonHousing", package = "mlbench")
 BostonHousing <- transform(BostonHousing,
@@ -384,7 +384,7 @@ bh_tree <- lmtree(medv ~ log(lstat) + I(rm^2) | zn +
                     indus + chas + nox + age + dis + rad + tax + crim + b + ptratio,
                   data = BostonHousing, minsize = 40)
 
-## ---- fig.width= 7, fig.asp=1, eval = T----------------------------------
+## ----fig.width= 7, fig.asp=1, eval = T----------------------------------------
 # terminal space specifies at which value of y the terminal plots begin
 bh_plot <- ggparty(bh_tree, terminal_space = 0.5) +
   geom_edge() +
@@ -406,10 +406,10 @@ bh_plot <- ggparty(bh_tree, terminal_space = 0.5) +
 
 bh_plot
 
-## ---- fig.width=7, fig.asp = 1, eval = T---------------------------------
+## ----fig.width=7, fig.asp = 1, eval = T---------------------------------------
 bh_plot + theme_bw()
 
-## ---- fig.width= 7, fig.asp=1, eval = T----------------------------------
+## ----fig.width= 7, fig.asp=1, eval = T----------------------------------------
 ggparty(bh_tree, terminal_space = 0.5,
         # id specifies node; x and y values need to be between 0 and 1
         layout = data.frame(id = c(1, 2),
@@ -430,23 +430,23 @@ ggparty(bh_tree, terminal_space = 0.5,
     nudge_y = -0.25) +
   theme_bw()
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 autoplot(py)
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 autoplot(t2)
 
-## ---- fig.asp = 1, eval = T----------------------------------------------
+## ----fig.asp = 1, eval = T----------------------------------------------------
 autoplot(bh_tree, plot_var = "log(lstat)", show_fit = FALSE)
 autoplot(bh_tree, plot_var = "I(rm^2)", show_fit = TRUE)
 
-## ---- eval = T-----------------------------------------------------------
+## ----eval = T-----------------------------------------------------------------
 autoplot(gbsg2_tree, plot_var = "pnodes")
 
-## ---- fig.asp = 1, eval = T----------------------------------------------
+## ----fig.asp = 1, eval = T----------------------------------------------------
 autoplot(tr_tree)
 
-## ---- fig.width= 7, fig.asp= 1, eval = T---------------------------------
+## ----fig.width= 7, fig.asp= 1, eval = T---------------------------------------
 
 asterisk_sign <- function(p_value) {
   if (p_value < 0.001) return(c("***"))
@@ -497,7 +497,7 @@ ggparty(tr_tree,
                   nudge_y = 0.01) +
   theme(legend.position = "none")
 
-## ---- fig.asp = 1, eval = T----------------------------------------------
+## ----fig.asp = 1, eval = T----------------------------------------------------
 # create dataframe with ids, densities and breaks
 # since we are going to supply the data.frame directly to a geom inside gglist,
 # we don't need to worry about the number of observations per id and only data for the ids

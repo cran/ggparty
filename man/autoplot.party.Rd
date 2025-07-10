@@ -13,8 +13,7 @@
 
 \method{autoplot}{modelparty}(object, plot_var = NULL, ...)
 
-\method{autoplot}{lmtree}(object, plot_var = NULL, show_fit = TRUE,
-  ...)
+\method{autoplot}{lmtree}(object, plot_var = NULL, show_fit = TRUE, ...)
 }
 \arguments{
 \item{object}{object of class party.}
@@ -22,9 +21,9 @@
 \item{...}{additional parameters}
 
 \item{plot_var}{Which covariate to plot against response. Defaults to second
-column in \code{data} of tree.}
+column in `data` of tree.}
 
-\item{show_fit}{If TRUE \code{fitted_values} are drawn.}
+\item{show_fit}{If TRUE `fitted_values` are drawn.}
 }
 \description{
 autoplot methods for party objects

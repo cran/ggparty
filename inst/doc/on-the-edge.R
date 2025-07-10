@@ -1,11 +1,11 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
 collapse = TRUE,
 comment = "#>",
 fig.width = 7
 )
 
-## ---- echo = T, message= FALSE-------------------------------------------
+## ----echo = T, message= FALSE-------------------------------------------------
 library(ggparty) 
 data("WeatherPlay", package = "partykit")
 levels(WeatherPlay$outlook)[1] <- c("beta")
@@ -22,28 +22,28 @@ pn <- partynode(1L, split = sp_o, kids = list(
     partynode(8L, info = "no")))))
 py <- party(pn, WeatherPlay)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggparty(py) +
   geom_edge() +
   geom_edge_label() +
   geom_node_splitvar() +
   geom_node_info()
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggparty(py) +
   geom_edge() +
   geom_edge_label(parse = FALSE) +
   geom_node_splitvar() +
   geom_node_info()
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggparty(py) +
   geom_edge() +
   geom_edge_label(parse_all = TRUE) +
   geom_node_splitvar() +
   geom_node_info()
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggparty(py) +
   geom_edge() +
   geom_edge_label(mapping = aes(label = paste(breaks_label)),
@@ -52,7 +52,7 @@ ggparty(py) +
   geom_node_splitvar() +
   geom_node_info()
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggparty(py) +
   geom_edge() +
   geom_edge_label(mapping = aes(label = paste(breaks_label)),
@@ -66,21 +66,21 @@ ggparty(py) +
   geom_node_splitvar() +
   geom_node_info()
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggparty(py) +
   geom_edge() +
   geom_edge_label(mapping = aes(label = paste(breaks_label, "*NA^", id))) +
   geom_node_splitvar() +
   geom_node_info()
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggparty(py) +
   geom_edge() +
   geom_edge_label(mapping = aes(label = paste0(breaks_label, "*\"NA^\"*", 1:8))) +
   geom_node_splitvar() +
   geom_node_info()
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 library(MASS)
 SexTest <- ctree(sex ~ ., data = Aids2)
 ggparty(SexTest) +
@@ -92,7 +92,7 @@ ggparty(SexTest) +
                                         position = position_fill())),
                  shared_axis_labels = TRUE)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 library(MASS)
 SexTest <- ctree(sex ~ ., data = Aids2)
 ggparty(SexTest) +

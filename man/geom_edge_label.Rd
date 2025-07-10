@@ -4,10 +4,19 @@
 \alias{geom_edge_label}
 \title{Draw edge labels}
 \usage{
-geom_edge_label(mapping = NULL, nudge_x = 0, nudge_y = 0,
-  ids = NULL, shift = 0.5, label.size = 0,
-  splitlevels = seq_len(100), max_length = NULL, parse_all = FALSE,
-  parse = TRUE, ...)
+geom_edge_label(
+  mapping = NULL,
+  nudge_x = 0,
+  nudge_y = 0,
+  ids = NULL,
+  shift = 0.5,
+  label.size = 0,
+  splitlevels = seq_len(100),
+  max_length = NULL,
+  parse_all = FALSE,
+  parse = TRUE,
+  ...
+)
 }
 \arguments{
 \item{mapping}{Mapping of \code{label} label defaults to \strong{breaks_label}. Other
@@ -19,7 +28,7 @@ mappings can be added here as \code{aes()}.}
 
 \item{shift}{Value in (0,1). Moves label along corresponding edge.}
 
-\item{label.size}{See \code{\link[=geom_label]{geom_label()}}.}
+\item{label.size}{See \code{\link[ggplot2:geom_text]{ggplot2::geom_label()}}.}
 
 \item{splitlevels}{Which levels of split to plot. This may be useful in the
 presence of many factor levels for one split break.}
@@ -31,7 +40,7 @@ signs of \strong{breaks_label} are deparsed. If \code{TRUE} complete \strong{bre
 
 \item{parse}{Needs to be true in order to parse inequality signs of \strong{breaks_label}.}
 
-\item{...}{Additional arguments for \code{\link[=geom_label]{geom_label()}}.}
+\item{...}{Additional arguments for \code{\link[ggplot2:geom_text]{ggplot2::geom_label()}}.}
 }
 \description{
 Label edges with corresponding split breaks
